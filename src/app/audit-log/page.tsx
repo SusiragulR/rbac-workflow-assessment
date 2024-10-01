@@ -2,22 +2,25 @@ import React from 'react';
 import { options } from '../api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
+import connectMongo from '../../../utils/connectMongo';
 import AuditModel from '../../../models/AuditModel';
 
-interface Audit{
-        _id: string,
-        role: string,
-        updatedBy: string,
-        status: string,
-        mode: string,
-        amount: number
-    }
+interface Audit {
+    _id: string;
+    role: string;
+    updatedBy: string;
+    status: string;
+    mode: string;
+    amount: number;
+}
 export default async function page() {
     const session = await getServerSession(options);
 
     if (!session) {
         redirect('/api/auth/signin?callbackUrl=/');
     }
+
+    await connectMongo();
 
     if (session.user.role == 'admin') {
         const auditData = await AuditModel.find({});
