@@ -3,6 +3,7 @@ import { options } from '../api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import ViewTransactions from '@/components/ViewTransactions';
+import connectMongo from '../../../utils/connectMongo';
 
 export default async function page() {
     const session = await getServerSession(options);
@@ -10,6 +11,8 @@ export default async function page() {
     if (!session) {
         redirect('/api/auth/signin?callbackUrl=/view-transactions');
     }
+
+    await connectMongo()
 
     let transactions;
 
