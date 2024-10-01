@@ -2,11 +2,11 @@
 import React from 'react';
 
 interface Transaction {
-    _id?: any;
-    status: String;
-    uploadedBy: String;
-    mode: String;
-    amount: Number;
+    _id?: string;
+    status: string;
+    uploadedBy: string;
+    mode: string;
+    amount: number;
 }
 
 interface ManagerViewProps {

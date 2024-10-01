@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { options } from '../../../../api/auth/[...nextauth]/options';
-import { getServerSession } from 'next-auth/next';
 import TransactionModel from '../../../../../../models/TransModel';
 import AuditModel from '../../../../../../models/AuditModel';
 import connectMongo from '../../../../../../utils/connectMongo';

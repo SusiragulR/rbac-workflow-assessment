@@ -27,10 +27,10 @@ export async function GET(
         }
 
         return NextResponse.json({ success: true, data }, { status: 200 });
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error fetching transactions:', error);
         return NextResponse.json(
-            { success: false, message: error.message },
+            { success: false, message: (error as Error).message },
             { status: 500 }
         );
     }

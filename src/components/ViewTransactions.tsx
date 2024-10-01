@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import ManagerView from './TransactionView';
 
 interface Transaction {
-    _id?: any;
-    status: String;
-    uploadedBy: String;
-    mode: String;
-    amount: Number;
+    _id?: string;
+    status: string;
+    uploadedBy: string;
+    mode: string;
+    amount: number;
 }
 
 interface ViewTransactionsProps {

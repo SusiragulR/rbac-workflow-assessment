@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { options } from '../../api/auth/[...nextauth]/options';
-import { getServerSession } from 'next-auth/next';
-import { redirect } from 'next/navigation';
 import TransactionModel from '../../../../models/TransModel';
 import AuditModel from '../../../../models/AuditModel';
 import connectMongo from '../../../../utils/connectMongo';
@@ -46,10 +43,10 @@ export async function POST(req: NextRequest) {
             { success: true, data: newTransaction },
             { status: 201 }
         );
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error creating transaction:', error);
         return NextResponse.json(
-            { success: false, message: error.message },
+            { success: false, message: (error as Error).message },
             { status: 500 }
         );
     }
@@ -72,10 +69,10 @@ export async function GET(req: NextRequest) {
         }
 
         return NextResponse.json({ success: true, data }, { status: 200 });
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error fetching transactions:', error);
         return NextResponse.json(
-            { success: false, message: error.message },
+            { success: false, message: (error as Error).message },
             { status: 500 }
         );
     }

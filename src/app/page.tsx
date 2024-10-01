@@ -10,7 +10,7 @@ export default async function Home() {
             {session ? (
                 <h1 className="text-center text-2xl mx-auto">{`Hi...${session.user.role}`}</h1>
             ) : (
-                <h1 className="text-center text-2xl mx-auto"> You aren't signed in <Link href="/api/auth/signin?callbackUrl=/" className='text-blue-800'>SignIn</Link> to continue</h1>
+                <h1 className="text-center text-2xl mx-auto"> You arent signed in <Link href="/api/auth/signin?callbackUrl=/" className='text-blue-800'>SignIn</Link> to continue</h1>
             )}
         </section>
     );

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 interface Props {
     userRole: string;
-    userId: String;
+    userId: string;
 }
 
 export default function AddTransactionForm({ userRole, userId }: Props) {
@@ -25,14 +25,14 @@ export default function AddTransactionForm({ userRole, userId }: Props) {
         console.log(newTransaction);
 
         try {
-            const response = await fetch('/api/transactions', {
+            await fetch('/api/transactions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(newTransaction)
             });
-        } catch (error: any) {
+        } catch (error) {
             console.log(error);
         }
     };

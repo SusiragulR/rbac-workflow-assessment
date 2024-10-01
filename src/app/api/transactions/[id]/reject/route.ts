@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { options } from '../../../../api/auth/[...nextauth]/options';
-import { getServerSession } from 'next-auth/next';
-import { redirect } from 'next/navigation';
 import TransactionModel from '../../../../../../models/TransModel';
 import AuditModel from '../../../../../../models/AuditModel';
 import connectMongo from '../../../../../../utils/connectMongo';
@@ -52,10 +49,10 @@ export async function PUT(
             { success: true, data: transaction },
             { status: 200 }
         );
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error approving transaction:', error);
         return NextResponse.json(
-            { success: false, message: error.message },
+            { success: false, message: (error as Error).message },
             { status: 500 }
         );
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { options } from '../api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';

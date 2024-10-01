@@ -4,6 +4,14 @@ import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import AuditModel from '../../../models/AuditModel';
 
+interface Audit{
+        _id: string,
+        role: String,
+        updatedBy: String,
+        status: String,
+        mode: String,
+        amount: Number
+    }
 export default async function page() {
     const session = await getServerSession(options);
 
@@ -15,11 +23,11 @@ export default async function page() {
         const auditData = await AuditModel.find({});
         return (
             <section>
-                {auditData.map((article: any) => (
-                    <article key={article.id} className="border p-4 mb-4">
+                {auditData.map((article: Audit) => (
+                    <article key={article._id} className="border p-4 mb-4">
                         <h2 className="text-xl">{article.updatedBy}</h2>
                         <p>{article.status}</p>
-                        <p>₹ {article.amount}</p>
+                        <p>₹ {`${article.amount}`}</p>
                     </article>
                 ))}
             </section>
