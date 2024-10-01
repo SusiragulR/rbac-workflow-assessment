@@ -12,7 +12,7 @@ export async function GET(
     const session = await getServerSession(options);
 
     if (!session) {
-        redirect('/api/auth/signin?callbackUrl=/view-transactions');
+        redirect('/api/auth/signin?callbackUrl=https://rbac-workflow-assessment-e28o.vercel.app/');
     }
 
     try {

@@ -8,7 +8,7 @@ export default async function page() {
     const session = await getServerSession(options);
 
     if (!session) {
-        redirect('/api/auth/signin?callbackUrl=/');
+        redirect('/api/auth/signin?callbackUrl=https://rbac-workflow-assessment-e28o.vercel.app/');
     }
 
     return (
