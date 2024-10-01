@@ -1,17 +1,10 @@
 import React from 'react';
-import connectMongoDb from '../../../utils/connectMongo';
 import { options } from '../api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import AuditModel from '../../../models/AuditModel';
 
 export default async function page() {
-    try {
-        await connectMongoDb();
-    } catch (error) {
-        console.log((error as Error).message);
-    }
-
     const session = await getServerSession(options);
 
     if (!session) {
@@ -22,16 +15,20 @@ export default async function page() {
         const auditData = await AuditModel.find({});
         return (
             <section>
-                {auditData.map((article) => (
+                {auditData.map((article: any) => (
                     <article key={article.id} className="border p-4 mb-4">
-                        <h2 className="text-xl font-bold">{article.amount}</h2>
+                        <h2 className="text-xl">{article.updatedBy}</h2>
                         <p>{article.status}</p>
-                        <p>{article.updatedBy}</p>
+                        <p>₹ {article.amount}</p>
                     </article>
                 ))}
             </section>
         );
     } else {
-        return <div>Only admins have access</div>;
+        return (
+            <div className="flex items-center justify-center min-h-screen text-2xl">
+                Only admins have access
+            </div>
+        );
     }
 }

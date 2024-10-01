@@ -17,3 +17,14 @@ const config: Config = {
   plugins: [],
 };
 export default config;
+
+
+/* module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        custom: ['CustomFont', 'sans-serif'], // Custom font family
+      },
+    },
+  },
+}; */

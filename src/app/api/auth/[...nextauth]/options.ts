@@ -25,28 +25,40 @@ export const options: NextAuthOptions = {
                 username: {
                     label: 'Username:',
                     type: 'text',
-                    placeholder: 'your-cool-username'
+                    placeholder: 'username'
                 },
                 password: {
                     label: 'Password:',
                     type: 'password',
-                    placeholder: 'your-awesome-password'
+                    placeholder: 'password'
                 }
             },
 
             async authorize(credentials) {
-                const user = {
-                    id: '42',
-                    name: 'ragul',
-                    password: 'nextauth',
+                const user1 = {
+                    id: 'manager@gmail.com',
+                    name: 'manager',
+                    password: 'manager',
                     role: 'manager'
                 };
 
+                const user2 = {
+                    id: 'admin@gmail.com',
+                    name: 'admin',
+                    password: 'admin',
+                    role: 'admin'
+                };
+
                 if (
-                    credentials?.username === user.name &&
-                    credentials?.password === user.password
+                    credentials?.username === user1.name &&
+                    credentials?.password === user1.password
                 ) {
-                    return user;
+                    return user1;
+                } else if (
+                    credentials?.username === user2.name &&
+                    credentials?.password === user2.password
+                ) {
+                    return user2;
                 } else {
                     return null;
                 }
