@@ -18,7 +18,7 @@ export default async function page() {
 
     try {
         const response = await fetch(
-            `http://localhost:3000/api/transactions?userRole=${session.user?.role}&userId=${session.user?.email}`,
+            `https://susiragul-rbac-workflow-assessment.vercel.app/api/transactions?userRole=${session.user?.role}&userId=${session.user?.email}`,
             { method: 'GET' }
         );
 
