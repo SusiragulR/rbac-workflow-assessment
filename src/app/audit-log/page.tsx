@@ -6,11 +6,11 @@ import AuditModel from '../../../models/AuditModel';
 
 interface Audit{
         _id: string,
-        role: String,
-        updatedBy: String,
-        status: String,
-        mode: String,
-        amount: Number
+        role: string,
+        updatedBy: string,
+        status: string,
+        mode: string,
+        amount: number
     }
 export default async function page() {
     const session = await getServerSession(options);

@@ -11,8 +11,8 @@ interface Transaction {
 }
 
 interface ViewTransactionsProps {
-    transactions: Transaction[]; // Expecting an array of transactions
-    userRole: string; // Assuming userRole is passed for future use
+    transactions: Transaction[];
+    userRole: string;
 }
 
 export default function ViewTransactions({ transactions, userRole }: ViewTransactionsProps) {

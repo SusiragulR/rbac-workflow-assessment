@@ -11,7 +11,7 @@ interface Transaction {
 
 interface ManagerViewProps {
     transaction: Transaction;
-    userRole: String;
+    userRole: string;
 }
 
 export default function ManagerView({

@@ -49,10 +49,10 @@ export async function PUT(
             { success: true, data: transaction },
             { status: 200 }
         );
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error approving transaction:', error);
         return NextResponse.json(
-            { success: false, message: error.message },
+            { success: false, message: (error as Error).message },
             { status: 500 }
         );
     }
