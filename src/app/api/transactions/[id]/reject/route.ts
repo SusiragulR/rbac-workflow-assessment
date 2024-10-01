@@ -11,7 +11,6 @@ export async function PUT(
     const userId = searchParams.get('userId');
 
     try {
-        // Connect to MongoDB
         await connectMongo();
 
         // Extract transaction ID from the dynamic route
